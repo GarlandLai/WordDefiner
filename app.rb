@@ -21,8 +21,7 @@ end
 
 post ('/words') do
   name = params[:word_name]
-  definition = params[:word_definition]
-  word = Word.new(name, definition, nil)
+  word = Word.new(name, nil)
   word.create()
   @words = Word.all()
   erb(:words)

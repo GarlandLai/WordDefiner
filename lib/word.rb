@@ -3,13 +3,12 @@ require ('pry')
 class Word
   attr_reader :id
   attr_accessor :name
-
   @@words = {}
   @@total_rows = 0
 
-  def initialize(attributes)
-    @name = attributes.fetch(:name)
-    @id = attributes.fetch(:id) || @@total_rows += 1
+  def initialize(name, id)
+    @name = name
+    @id = id || @@total_rows += 1
   end
 
   def self.all
@@ -30,7 +29,7 @@ class Word
   end
 
   def create
-    @@words[self.id] = self
+    @@words[self.id] = Word.new(self.name, self.id)
   end
 
   def delete
@@ -39,7 +38,7 @@ class Word
 
   def update(name)
     self.name = name
-    @@words[self.id] = self
+    @@words[self.id] = Word.new(self.name, self.id)
   end
 
   def definitions

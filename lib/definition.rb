@@ -6,10 +6,10 @@ class Definition
   @@definitions = {}
   @@total_rows = 0
 
-  def initialize(attributes)
-    @define = attributes.fetch(:define)
-    @word_id = attributes.fetch(:word_id)
-    @id = attributes.fetch(:id) || @@total_rows += 1
+  def initialize(define, word_id, id)
+    @define = define
+    @word_id = word_id
+    @id = id || @@total_rows += 1
   end
 
   def self.all
@@ -29,13 +29,13 @@ class Definition
   end
 
   def create
-    @@definitions[self.id] = self
+    @@definitions[self.id] = Definition.new(self.define, self.word_id, self.id)
   end
 
   def update(define, word_id)
     self.define = define
     self.word_id = word_id
-    @@definitions[self.id] = self
+    @@definitions[self.id] = Definition.new(self.define, self.word_id, self.id)
   end
 
   def delete
@@ -55,6 +55,4 @@ class Definition
     end
     definitions
   end
-
-
 end
