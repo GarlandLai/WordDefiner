@@ -73,7 +73,6 @@ patch ('/words/:id/definitions/:definition_id') do
 end
 
 
-
 # Delete a definition and then route back to the word view.
 delete ('/words/:id/definitions/:definition_id') do
   definition = Definition.find(params[:definition_id].to_i())

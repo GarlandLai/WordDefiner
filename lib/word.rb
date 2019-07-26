@@ -36,21 +36,24 @@ class Word
 
   def self.search(name)
     @@words.values.select do |word|
+      binding.pry
       word.name == name
     end
   end
+
   def self.sort
     array = @@words.sort_by {|key, val| val.name}
     @@words = Hash[array.map { |key, val | [key,val]}]
   end
 
-  def delete
-    @@words.delete(self.id)
-  end
 
   def update(name)
     self.name = name
     @@words[self.id] = Word.new(self.name, self.id)
+  end
+
+  def delete
+    @@words.delete(self.id)
   end
 
   def definitions
