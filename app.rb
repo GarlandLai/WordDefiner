@@ -32,11 +32,11 @@ get ('/words/:id') do
   erb(:word)
 end
 
-post ('/words_search') do
-  name = params[:search]
-  @word = Word.search(name)
-  erb(:word_results)
-end
+# post ('/words_search') do
+#   name = params[:search]
+#   @word = Word.search(name)
+#   erb(:word_results)
+# end
 
 get ('/words/:id/edit') do
   @word = Word.find(params[:id].to_i())

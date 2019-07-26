@@ -36,7 +36,6 @@ class Word
 
   def self.search(name)
     @@words.values.select do |word|
-      binding.pry
       word.name == name
     end
   end
