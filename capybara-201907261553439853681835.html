@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Word Definer</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Update Apple</h1>
+
+<form action="/words/3" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <label for="name">Rename word</label>
+  <input type="text" name="name" id="name">
+
+  <button type="submit">Update</button>
+</form>
+
+<p><a href="/words">Return to word list</a></p>
+
+<form action="/words/3" method="post">
+  <input type="hidden" name="_method" value="delete">
+
+  <button type="submit">Delete word</button>
+</form>
+
+    </div>
+  </body>
+</html>
