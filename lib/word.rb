@@ -31,7 +31,6 @@ class Word
 
   def create
     @@words[self.id] = self
-    Word.sort
   end
 
   def delete
