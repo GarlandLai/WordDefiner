@@ -4,14 +4,14 @@
 
 <h3>Word Definition</h3>
 
-   <% if @word.definitions %>
+   <% if @word.definitions.any? %>
     <ul>
       <% @word.definitions.each do |definition| %>
         <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>"><%= definition.name %></a></li>
       <% end %>
     </ul>
   <% else %>
-    <p>There are no definitions listed for this word yet.</p>
+    <p>There are no definitions listed for this word.</p>
   <% end %>
 
 <h4>Add a definition:</h4>

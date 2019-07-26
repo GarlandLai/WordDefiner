@@ -66,11 +66,11 @@ post ('/words/:id/definitions') do
   erb(:word)
 end
 
-get ('/words/:id/definitions/:word_id') do
+get ('/words/:id/definitions/:definition_id') do
   @definition = Definition.find(params[:id].to_i())
   erb(:definition)
 end
-# Edit a definition and then route back to the word view.
+
 patch ('/words/:id/definitions/:definition_id') do
   @word = Word.find(params[:id].to_i())
   definition = Definition.find(params[:definition_id].to_i())
@@ -81,9 +81,9 @@ end
 
 # Delete a definition and then route back to the word view.
 delete ('/words/:id/definitions/:definition_id') do
+  @word = Word.find(params[:id].to_i())
   definition = Definition.find(params[:definition_id].to_i())
   definition.delete
-  @word = Word.find(params[:id].to_i())
   erb(:word)
 end
 
