@@ -1,26 +1,25 @@
-<h4>Word: <%= @word.name %></h4>
+<h4>Word Name: <%= @word.name %></h4>
 
+<h3>Word Definition</h3>
 
-<h3>Word Definitions</h3>
-
-   <% if @word.defines %>
+   <% if @word.definitions %>
     <ul>
-      <% @word.defines.each do |define| %>
-        <li><a href="/words/<%= @word.id %>/defines/<%= define.id %>"><%= define.name %></a></li>
+      <% @word.definitions.each do |definition| %>
+        <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>"><%= definition.name %></a></li>
       <% end %>
     </ul>
   <% else %>
-    <p>There are no defines listed for this word yet.</p>
+    <p>There are no definitions listed for this word yet.</p>
   <% end %>
 
-<h4>Add a define:</h4>
+<h4>Add a definition:</h4>
 
-<form action="/words/<%= @word.id %>/defines" method="post">
+<form action="/words/<%= @word.id %>/definitions" method="post">
   <div class="form-group">
-    <label for="define_name">Definition:</label>
-    <input id="define_name" name="define_name" class="form-control" type="text">
+    <label for="definition_name">Song name</label>
+    <input id="definition_name" name="definition_name" class="form-control" type="text">
   </div>
-  <button type="submit" class="btn">Add define</button>
+  <button type="submit" class="btn">Add definition</button>
 </form>
 
 

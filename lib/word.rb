@@ -15,6 +15,16 @@ class Word
     @@words.values()
   end
 
+  def save
+    @@words[self.id] = Word.new(self.name, self.id)
+      Word.sort
+  end
+
+
+  def == (word_to_compare)
+    self.name() == word_to_compare.name()
+  end
+
   def self.clear
     @@words = {}
     @@total_rows = 0
@@ -24,12 +34,14 @@ class Word
     @@words[id]
   end
 
-  def == (word_to_compare)
-    self.name() == word_to_compare.name()
+  def self.search(name)
+    @@words.values.select do |word|
+      word.name == name
+    end
   end
-
-  def create
-    @@words[self.id] = Word.new(self.name, self.id)
+  def self.sort
+    array = @@words.sort_by {|key, val| val.name}
+    @@words = Hash[array.map { |key, val | [key,val]}]
   end
 
   def delete
@@ -45,9 +57,4 @@ class Word
     Definition.find_by_word(self.id)
   end
 
-  def self.search(name)
-    @@words.values.select do |word|
-      word.name == name
-    end
-  end
 end

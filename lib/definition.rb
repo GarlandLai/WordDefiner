@@ -2,57 +2,58 @@ require ('pry')
 
 class Definition
   attr_reader :id
-  attr_accessor :define, :word_id
+  attr_accessor :name, :word_id
   @@definitions = {}
   @@total_rows = 0
 
-  def initialize(define, word_id, id)
-    @define = define
+  def initialize(name, word_id, id)
+    @name = name
     @word_id = word_id
     @id = id || @@total_rows += 1
+  end
+
+  def ==(definition_to_compare)
+    (self.name() == definition_to_compare.name()) && (self.word_id() == definition_to_compare.word_id())
   end
 
   def self.all
     @@definitions.values()
   end
 
-  def ==(definition_to_compare)
-    (self.define() == definition_to_compare.define()) && (self.word_id() == definition_to_compare.word_id())
+
+  def save
+    @@definitions[self.id] = Definition.new(self.name, self.word_id, self.id)
   end
 
-  def self.clear
-    @@definitions = {}
-  end
 
   def self.find(id)
     @@definitions[id]
   end
 
-  def create
-    @@definitions[self.id] = Definition.new(self.define, self.word_id, self.id)
-  end
-
-  def update(define, word_id)
-    self.define = define
+  def update(name, word_id)
+    self.name = name
     self.word_id = word_id
-    @@definitions[self.id] = Definition.new(self.define, self.word_id, self.id)
+    @@definitions[self.id] = Definition.new(self.name, self.word_id, self.id)
   end
 
   def delete
     @@definitions.delete(self.id)
   end
 
-  def word
-    Word.find(self.word_id)
+  def self.clear
+    @@definitions = {}
   end
 
   def self.find_by_word(wrd_id)
-    definitions = {}
+    definitions = []
     @@definitions.values.each do |definition|
-      if definition.word_id == word_id
+      if definition.word_id == wrd_id
         definitions.push(definition)
       end
     end
     definitions
+  end
+  def word
+    Word.find(self.word_id)
   end
 end
