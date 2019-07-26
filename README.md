@@ -10,7 +10,7 @@ _Creates a Website that takes user words and definitions. User has the ability t
 
 ## Setup/Installation Requirements
 
-1. [Click here](https://github.com/GarlandLai/WordDefiner.git) to get started!
+1. [Click here](https://git.heroku.com/morning-escarpment-87134.git) to get started!
 2. _Add words and definitions_
 
 ## Specifications
