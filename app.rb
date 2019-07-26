@@ -32,10 +32,6 @@ get ('/words/:id') do
   erb(:word)
 end
 
-get ('/words/:id/definitions/:word_id') do
-  @definition = Definition.find(params[:id].to_i())
-  erb(:definition)
-end
 
 # post ('/words_search') do
 #   name = params[:search]
@@ -62,6 +58,7 @@ delete ('/words/:id') do
   erb(:words)
 end
 
+
 post ('/words/:id/definitions') do
   @word = Word.find(params[:id].to_i())
   definition = Definition.new(params[:definition_name], @word.id, nil)
@@ -69,6 +66,10 @@ post ('/words/:id/definitions') do
   erb(:word)
 end
 
+get ('/words/:id/definitions/:word_id') do
+  @definition = Definition.find(params[:id].to_i())
+  erb(:definition)
+end
 # Edit a definition and then route back to the word view.
 patch ('/words/:id/definitions/:definition_id') do
   @word = Word.find(params[:id].to_i())
