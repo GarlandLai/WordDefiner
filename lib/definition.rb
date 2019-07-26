@@ -13,7 +13,7 @@ class Definition
   end
 
   def self.all
-    @@words.values
+    @@definitions.values()
   end
 
   def ==(definition_to_compare)
@@ -25,7 +25,7 @@ class Definition
   end
 
   def self.find(id)
-    @@defintions[id]
+    @@definitions[id]
   end
 
   def create
