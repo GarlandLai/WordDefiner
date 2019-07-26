@@ -7,14 +7,14 @@ describe "#Definition" do
   before(:each) do
     Word.clear()
     Definition.clear()
-    @word = Word.new({:name => "Cow", :id => nil})
-    @word.create()
+    @word = Word.new( "Cow", nil)
+    @word.save()
   end
 
   describe('#==') do
     it("is the same definition if it has the same attributes as another definition") do
-      definition = Definition.new({:define => "An animal", :word_id => @word.id, :id => nil})
-      definition2 = Definition.new({:define => "An animal", :word_id => @word.id, :id => nil})
+      definition = Definition.new( "An animal",  @word.id,  nil)
+      definition2 = Definition.new( "An animal",  @word.id,  nil)
       expect(definition).to(eq(definition2))
     end
   end
@@ -22,47 +22,47 @@ describe "#Definition" do
 
   describe('.all') do
     it("returns a list of all definitions") do
-      definition = Definition.new({:define => "An animal", :word_id => @word.id, :id => nil})
-      definition.create()
-      definition2 = Definition.new({:define => "Food", :word_id => @word.id, :id => nil})
-      definition2.create()
+      definition = Definition.new( "An animal",  @word.id,  nil)
+      definition.save()
+      definition2 = Definition.new( "Food",  @word.id,  nil)
+      definition2.save()
       expect(Definition.all).to(eq([definition, definition2]))
     end
   end
   #
-  describe('#create') do
-    it("creates an definition") do
-      definition = Definition.new({:define => "I go moooo", :word_id => @word.id, :id => nil})
-      definition.create()
+  describe('#save') do
+    it("saves an definition") do
+      definition = Definition.new( "I go moooo",  @word.id,  nil)
+      definition.save()
       expect(Definition.all).to(eq([definition]))
     end
   end
 
   describe('.find') do
     it("finds an definition by id") do
-      definition = Definition.new({:define => "An Animal", :word_id => @word.id, :id => nil})
-      definition.create()
-      definition2 = Definition.new({:define => "Food", :word_id => @word.id, :id => nil})
-      definition2.create()
+      definition = Definition.new( "An Animal",  @word.id,  nil)
+      definition.save()
+      definition2 = Definition.new( "Food",  @word.id,  nil)
+      definition2.save()
       expect(Definition.find(definition.id)).to(eq(definition))
     end
   end
 
   describe('#update') do
     it("updates an definition by id") do
-      definition = Definition.new({:define => "An Animal", :word_id => @word.id, :id => nil})
-      definition.create()
+      definition = Definition.new( "An Animal",  @word.id,  nil)
+      definition.save()
       definition.update("Food", @word.id)
-      expect(definition.define).to(eq("Food"))
+      expect(definition.name).to(eq("Food"))
     end
   end
 
   describe('#delete') do
     it("deletes an definition by id") do
-      definition = Definition.new({:define => "An Animal", :word_id => @word.id, :id => nil})
-      definition.create()
-      definition2 = Definition.new({:define => "Food", :word_id => @word.id, :id => nil})
-      definition2.create()
+      definition = Definition.new( "An Animal",  @word.id,  nil)
+      definition.save()
+      definition2 = Definition.new( "Food",  @word.id,  nil)
+      definition2.save()
       definition.delete()
       expect(Definition.all).to(eq([definition2]))
     end
