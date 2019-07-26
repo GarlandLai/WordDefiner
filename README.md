@@ -10,7 +10,7 @@ _Creates a Website that takes user words and definitions. User has the ability t
 
 ## Setup/Installation Requirements
 
-1. [Click here](https://git.heroku.com/morning-escarpment-87134.git) to get started!
+1. [Click here](https://morning-escarpment-87134.herokuapp.com/words) to get started!
 2. _Add words and definitions_
 
 ## Specifications
@@ -34,7 +34,8 @@ _If you have any questions, concerns, or suggestions, please contact me at Garla
 
 * _Github_
 * _Ruby 2.5.1_
-* @@@@@@@@
+* _Heroku_
+* _Gems: Rspec, Pry, Sinatra, pivotal_git_scripts, sinatra-contrib, and capybara._
 
 #### License
 
