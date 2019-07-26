@@ -32,6 +32,11 @@ get ('/words/:id') do
   erb(:word)
 end
 
+get ('/words/:id/definitions/:word_id') do
+  @definition = Definition.find(params[:id].to_i())
+  erb(:definition)
+end
+
 # post ('/words_search') do
 #   name = params[:search]
 #   @word = Word.search(name)
