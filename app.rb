@@ -32,13 +32,6 @@ get ('/words/:id') do
   erb(:word)
 end
 
-
-# post ('/words_search') do
-#   name = params[:search]
-#   @word = Word.search(name)
-#   erb(:word_results)
-# end
-
 get ('/words/:id/edit') do
   @word = Word.find(params[:id].to_i())
   erb(:edit_word)
@@ -57,7 +50,6 @@ delete ('/words/:id') do
   @words = Word.all
   erb(:words)
 end
-
 
 post ('/words/:id/definitions') do
   @word = Word.find(params[:id].to_i())
@@ -78,24 +70,9 @@ patch ('/words/:id/definitions/:definition_id') do
   erb(:word)
 end
 
-
-# Delete a definition and then route back to the word view.
 delete ('/words/:id/definitions/:definition_id') do
   @word = Word.find(params[:id].to_i())
   definition = Definition.find(params[:definition_id].to_i())
   definition.delete
   erb(:word)
 end
-
-# get ('/words/:id/definitions/:definition_id/lyrics') do
-#   @definition = Definition.find(params[:definition_id].to_i())
-#   erb(:lyrics)
-# end
-#
-# post ('/words/:id/definitions/:definition_id/lyrics') do
-#   lyrics = params[:lyrics]
-#   definition = Definition.new(name, lyrics)
-#   definition.save()
-#   @definition = Definition.new()
-#   erb(:words)
-# end

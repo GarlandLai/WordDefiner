@@ -20,11 +20,9 @@ class Definition
     @@definitions.values()
   end
 
-
   def save
     @@definitions[self.id] = Definition.new(self.name, self.word_id, self.id)
   end
-
 
   def self.find(id)
     @@definitions[id]

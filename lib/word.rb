@@ -20,7 +20,6 @@ class Word
       Word.sort
   end
 
-
   def == (word_to_compare)
     self.name() == word_to_compare.name()
   end
@@ -44,7 +43,6 @@ class Word
     array = @@words.sort_by {|key, val| val.name}
     @@words = Hash[array.map { |key, val | [key,val]}]
   end
-
 
   def update(name)
     self.name = name

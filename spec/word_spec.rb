@@ -13,7 +13,6 @@ describe '#Word' do
     end
   end
 
-  #
   describe('#save') do
     it("saves a word") do
       word = Word.new( "Cow",  nil)
